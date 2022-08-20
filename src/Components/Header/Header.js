@@ -1,8 +1,14 @@
 import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
-import { AppBar, Container, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material';
 import styled from '@emotion/styled';
+import HeaderOptions from '../HeaderOptions/HeaderOptions';
+import HomeIcon from '@mui/icons-material/Home';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import ChatIcon from '@mui/icons-material/Chat';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const Search = styled.div({
 	position: 'relative',
@@ -40,26 +46,33 @@ function Header() {
 		<>
 			<AppBar className='header'>
 				<Container maxWidth='lg'>
-					<Toolbar disableGutters sx={{ gap: '5px' }}>
-						<Typography
-							variant='a'
-							component='a'
-							href='#'
-							className='header_logo'>
-							<svg
-								xmlns='http://www.w3.org/2000/svg'
-								viewBox='0 0 24 24'
-								data-supported-dps='24x24'
-								fill='currentColor'
-								className='linkedin_logo'
-								width='24'
-								height='24'
-								focusable='false'>
-								<path d='M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z'></path>
-							</svg>
-						</Typography>
-						<Search className='header_left'>
-							<div className='header_search'>
+					<Toolbar
+						disableGutters
+						sx={{
+							display: 'flex',
+							justifyContent: 'space-between',
+							alignItems: 'center',
+							minHeight: '48px !important',
+						}}>
+						<Box className='header_left'>
+							<Typography
+								variant='a'
+								component='a'
+								href='#'
+								className='header_logo'>
+								<svg
+									xmlns='http://www.w3.org/2000/svg'
+									viewBox='0 0 24 24'
+									data-supported-dps='24x24'
+									fill='currentColor'
+									className='linkedin_logo'
+									width='24'
+									height='24'
+									focusable='false'>
+									<path d='M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z'></path>
+								</svg>
+							</Typography>
+							<Search className='header_search'>
 								<SearchIconWrapper>
 									<SearchIcon
 										sx={{
@@ -75,9 +88,28 @@ function Header() {
 									id='search'
 									placeholder='Search'
 								/>
-							</div>
-						</Search>
-						<div className='header_right'></div>
+							</Search>
+						</Box>
+						<Box className='header_right'>
+							<HeaderOptions Icon={HomeIcon} Title='Home' />
+							<HeaderOptions
+								Icon={SupervisorAccountIcon}
+								Title='My Network'
+							/>
+							<HeaderOptions
+								Icon={BusinessCenterIcon}
+								Title='Jobs'
+							/>
+							<HeaderOptions Icon={ChatIcon} Title='Messaging' />
+							<HeaderOptions
+								Icon={NotificationsIcon}
+								Title='Notifications'
+							/>
+							<HeaderOptions
+								avatar='https://media-exp1.licdn.com/dms/image/C4E03AQGob0v3H2IlLg/profile-displayphoto-shrink_100_100/0/1516821177544?e=1666224000&v=beta&t=8oEohoUJrjoFulFuYGXd6c1j33BUbUWDZiXuBU1ugpA'
+								Title='Me'
+							/>
+						</Box>
 					</Toolbar>
 				</Container>
 			</AppBar>
