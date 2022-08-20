@@ -1,0 +1,14 @@
+.header {
+	background-color: #fff !important;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+	box-shadow: none !important;
+}
+
+.header_logo svg {
+	fill: #0a66c2;
+	width: 35px;
+	height: 35px;
+}
+.header_search svg {
+	fill: rgba(0, 0, 0, 0.9);
+}
