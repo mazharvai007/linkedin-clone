@@ -1,0 +1,27 @@
+.post {
+	padding: 1.2rem 1.6rem;
+	background-color: #fff;
+	border-radius: 10px;
+}
+.postHeader {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row wrap;
+	align-items: center;
+	gap: 15px;
+	margin-bottom: 0.8rem;
+}
+.postHeader .postInfo {
+	flex: 1;
+}
+.postBody {
+	overflow-wrap: anywhere;
+}
+.postButtons {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row wrap;
+	align-items: center;
+	margin-top: 1.5rem;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+}

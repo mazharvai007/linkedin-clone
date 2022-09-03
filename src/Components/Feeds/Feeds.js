@@ -6,6 +6,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import EventIcon from '@mui/icons-material/Event';
 import FormatIndentIncreaseIcon from '@mui/icons-material/FormatIndentIncrease';
 import './Feeds.css';
+import Post from '../Post/Post';
 
 function Feeds() {
 	return (
@@ -61,6 +62,14 @@ function Feeds() {
 							color='#e16745'
 						/>
 					</div>
+				</div>
+				<div className='feedPostsArea'>
+					<Post
+						authorName='Mazharul Islam'
+						authorDescription='Play with JavaScript (React, Nextjs, Material UI, Nodejs, Tailwind CSS)'
+						postMessage='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+						photoURL='https://media-exp1.licdn.com/dms/image/C4E03AQGob0v3H2IlLg/profile-displayphoto-shrink_100_100/0/1516821177544?e=1667433600&v=beta&t=bJjQM-gRrjRhpF9180OTklxqIFv3AWTwuGHM5Dj5K2o'
+					/>
 				</div>
 			</div>
 		</>
