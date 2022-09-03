@@ -1,0 +1,21 @@
+.CommunityPanel_header {
+	padding: 0 1.2rem 1.2rem;
+}
+.CommunityPanel_header h2 {
+	font-size: 1.2rem;
+	color: rgba(0, 0, 0, 0.9);
+}
+
+.Community_recentItem a {
+	display: flex;
+	gap: 5px;
+	color: rgba(0, 0, 0, 0.6);
+	text-decoration: none;
+	padding: 2px 1.2rem;
+	font-size: 1.3rem;
+	transition: background-color 167ms, color 167ms;
+}
+.Community_recentItem a:hover {
+	background-color: rgba(0, 0, 0, 0.08);
+	color: rgba(0, 0, 0, 0.9);
+}

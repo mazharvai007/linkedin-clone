@@ -21,7 +21,13 @@ function Sidebar() {
 	return (
 		<>
 			<Box className='sidebar'>
-				<Card className='userIdentityPanel'>
+				<Card
+					className='userIdentityPanel'
+					sx={{
+						borderRadius: '.8rem',
+						border: '1px rgba(0, 0, 0, 0.08) solid',
+						boxShadow: 'none',
+					}}>
 					<CardMedia
 						component='img'
 						image='https://static-exp1.licdn.com/sc/h/55k1z8997gh8dwtihm11aajyq'
@@ -119,9 +125,23 @@ function Sidebar() {
 						</List>
 					</CardContent>
 				</Card>
-				<Card className='communityPanel'>
+				<Card
+					className='communityPanel'
+					sx={{
+						padding: '0.8rem 0 0',
+						borderRadius: '.8rem',
+						border: '1px rgba(0, 0, 0, 0.08) solid',
+						boxShadow: 'none',
+					}}>
 					<CardContent sx={{ padding: '0 !important' }}>
 						<CommunityPanel />
+						<Typography
+							className='discoverMore'
+							component='a'
+							variant='a'
+							href='#'>
+							Discover More
+						</Typography>
 					</CardContent>
 				</Card>
 			</Box>

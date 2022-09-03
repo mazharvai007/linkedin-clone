@@ -4,3 +4,21 @@
 	flex-flow: row wrap;
 	gap: 15px;
 }
+
+.communityPanel {
+	padding: 1.2rem 1.2rem 1.6rem;
+	background-color: #fff;
+	border-radius: 5px;
+	width: 100%;
+}
+
+.discoverMore {
+	color: rgba(0, 0, 0, 0.6);
+	border-top: 1px rgba(0, 0, 0, 0.08) solid;
+	padding: 12px;
+	display: block;
+	text-align: center;
+	margin-top: 1.6rem !important;
+	font-size: 1.4rem;
+	text-decoration: none;
+}

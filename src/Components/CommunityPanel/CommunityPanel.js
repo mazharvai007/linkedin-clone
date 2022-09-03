@@ -1,33 +1,29 @@
-import {
-	Box,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemText,
-} from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import './CommunityPanel.css';
-// import CommunityPanelItem from './CommunityPanelItem';
-
-const data = [
-	{ id: 1, title: 'Web Site Development' },
-	{ id: 2, title: 'Health Insurance' },
-	{ id: 3, title: 'Productivity' },
-	{ id: 4, title: 'Mental Health' },
-	{ id: 5, title: 'Personal Finance' },
-];
 
 function CommunityPanel() {
-	const [open, setOpen] = useState(true);
+	const recentItems = (topic) => (
+		<div className='Community_recentItem'>
+			<a href='/#'>
+				<span className='RecentItem_hashTag'>#</span>
+				<span className='RecentItem_title'>{topic}</span>
+			</a>
+		</div>
+	);
 	return (
 		<>
-			<Box>
-				<ListItemButton>
-					<ListItemText
-						primary='Recent'
-						secondary='Web Site Development, Health Insurance, Productivity, Mental Health, Personal Finance'></ListItemText>
-				</ListItemButton>
-			</Box>
+			<div className='CommunityPanel_itemsBlock'>
+				<div className='CommunityPanel_header'>
+					<h2>Recent</h2>
+				</div>
+				<div className='CommunityPanel_items'>
+					{recentItems('web site development')}
+					{recentItems('healthinsurance')}
+					{recentItems('productivity')}
+					{recentItems('mentalhealth')}
+					{recentItems('personalfinancial')}
+				</div>
+			</div>
 		</>
 	);
 }
