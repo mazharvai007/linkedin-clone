@@ -44,3 +44,8 @@
 	align-items: center;
 	margin-top: 5px;
 }
+.feedPostsArea {
+	display: flex;
+	flex-flow: column wrap;
+	gap: 15px;
+}

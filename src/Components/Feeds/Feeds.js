@@ -1,5 +1,5 @@
 import { Avatar, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FeedInputOptions from '../FeedInputOptions/FeedInputOptions';
 import ImageIcon from '@mui/icons-material/Image';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -7,8 +7,61 @@ import EventIcon from '@mui/icons-material/Event';
 import FormatIndentIncreaseIcon from '@mui/icons-material/FormatIndentIncrease';
 import './Feeds.css';
 import Post from '../Post/Post';
+import { collection, getDocs, addDoc, Timestamp } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 function Feeds() {
+	const [input, setInput] = useState('');
+	const [posts, setPosts] = useState([]);
+
+	useEffect(() => {
+		async function fetchData() {
+			/**
+			 * Fetch data from firestore
+			 * both functions are working same pattern
+			 */
+
+			const postRef = collection(db, 'posts');
+			const postSnap = await getDocs(postRef);
+			const newPosts = postSnap.docs.map((doc) => {
+				return {
+					id: doc.id,
+					...doc.data(),
+				};
+			});
+
+			setPosts(newPosts);
+
+			// const querySnapshot = await getDocs(collection(db, 'posts'));
+			// setPosts(
+			// 	querySnapshot.docs.map((doc) => {
+			// 		return {
+			// 			id: doc.id,
+			// 			...doc.data(),
+			// 		};
+			// 	})
+			// );
+		}
+		fetchData();
+	}, []);
+
+	posts.map((post) => console.log(post));
+
+	const sendPost = async (e) => {
+		e.preventDefault();
+
+		try {
+			await addDoc(collection(db, 'posts'), {
+				name: 'Karim',
+				description: 'My name is Karim',
+				message: input,
+				photoURL: '',
+				timestamp: Timestamp.now(),
+			});
+		} catch (err) {
+			console.error(`Error adding document: ${err}`);
+		}
+	};
 	return (
 		<>
 			<div className='feeds'>
@@ -31,8 +84,11 @@ function Feeds() {
 									id='feed'
 									aria-label='feed'
 									placeholder='Start a post'
+									value={input}
+									onChange={(e) => setInput(e.target.value)}
 								/>
 								<input
+									onClick={sendPost}
 									type='submit'
 									value='Send'
 									aria-label='send'
@@ -64,12 +120,17 @@ function Feeds() {
 					</div>
 				</div>
 				<div className='feedPostsArea'>
-					<Post
-						authorName='Mazharul Islam'
-						authorDescription='Play with JavaScript (React, Nextjs, Material UI, Nodejs, Tailwind CSS)'
-						postMessage='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-						photoURL='https://media-exp1.licdn.com/dms/image/C4E03AQGob0v3H2IlLg/profile-displayphoto-shrink_100_100/0/1516821177544?e=1667433600&v=beta&t=bJjQM-gRrjRhpF9180OTklxqIFv3AWTwuGHM5Dj5K2o'
-					/>
+					{posts.map((post) => {
+						return (
+							<Post
+								key={post.id}
+								authorName={post.name}
+								authorDescription={post.description}
+								postMessage={post.message}
+								photoURL={post.photoURL}
+							/>
+						);
+					})}
 				</div>
 			</div>
 		</>
