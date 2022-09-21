@@ -7,7 +7,16 @@ import EventIcon from '@mui/icons-material/Event';
 import FormatIndentIncreaseIcon from '@mui/icons-material/FormatIndentIncrease';
 import './Feeds.css';
 import Post from '../Post/Post';
-import { collection, getDocs, addDoc, Timestamp } from 'firebase/firestore';
+import {
+	collection,
+	addDoc,
+	// Timestamp,
+	serverTimestamp,
+	query,
+	orderBy,
+	limit,
+	onSnapshot,
+} from 'firebase/firestore';
 import { db } from '../../firebase';
 
 function Feeds() {
@@ -21,31 +30,23 @@ function Feeds() {
 			 * both functions are working same pattern
 			 */
 
-			const postRef = collection(db, 'posts');
-			const postSnap = await getDocs(postRef);
-			const newPosts = postSnap.docs.map((doc) => {
-				return {
-					id: doc.id,
-					...doc.data(),
-				};
+			const postRef = query(
+				collection(db, 'posts'),
+				orderBy('timestamp', 'desc'),
+				limit(100)
+			);
+
+			onSnapshot(postRef, (snapshot) => {
+				setPosts(
+					snapshot.docs.map((doc) => ({
+						id: doc.id,
+						...doc.data(),
+					}))
+				);
 			});
-
-			setPosts(newPosts);
-
-			// const querySnapshot = await getDocs(collection(db, 'posts'));
-			// setPosts(
-			// 	querySnapshot.docs.map((doc) => {
-			// 		return {
-			// 			id: doc.id,
-			// 			...doc.data(),
-			// 		};
-			// 	})
-			// );
 		}
 		fetchData();
 	}, []);
-
-	posts.map((post) => console.log(post));
 
 	const sendPost = async (e) => {
 		e.preventDefault();
@@ -56,11 +57,14 @@ function Feeds() {
 				description: 'My name is Karim',
 				message: input,
 				photoURL: '',
-				timestamp: Timestamp.now(),
+				// timestamp: Timestamp.now(),
+				timestamp: serverTimestamp(),
 			});
 		} catch (err) {
 			console.error(`Error adding document: ${err}`);
 		}
+
+		setInput(''); // After submittig post, the field will be empty
 	};
 	return (
 		<>
