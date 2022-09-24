@@ -1,0 +1,84 @@
+.login {
+	margin: 100px;
+}
+.loginWrapper {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 24px;
+	background-color: #fff;
+	box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+	max-width: 385px;
+	border-radius: 8px;
+}
+.login .joinNow {
+	font-size: 16px;
+	margin-top: 50px;
+	text-align: center;
+}
+.login .loginRegister {
+	margin-left: 5px;
+	cursor: pointer;
+	color: #0073b1;
+	font-weight: 700;
+}
+.loginFormHeader {
+	text-align: left;
+	margin-bottom: 20px;
+}
+.loginFormHeader .loginFormHeaderTitle {
+	font-size: 3.2rem;
+	line-height: 1.33333;
+	font-weight: 600;
+	color: rgba(0, 0, 0, 0.9);
+	padding: 0 0 4px 0;
+}
+.loginFormHeader .loginFormHeaderSubTitle {
+	font-size: 1.4rem;
+	line-height: 1.75;
+	font-weight: 400;
+	color: rgba(0, 0, 0, 0.9);
+}
+.loginForm {
+	display: flex;
+	flex-flow: column wrap;
+	margin: 0 auto;
+	gap: 15px;
+}
+.loginForm .forgotPassword {
+	position: relative;
+	display: inline-block;
+	margin-top: -8px;
+	color: #0a66c2;
+	cursor: pointer;
+	font-size: 1.6rem;
+	width: fit-content;
+	transition: all 2ms;
+	font-weight: 700;
+}
+.loginForm .forgotPassword:hover,
+.login .loginRegister:hover {
+	text-decoration: underline;
+}
+.loginForm input {
+	font-size: 1.8rem;
+	line-height: 1.33333;
+	font-weight: 400;
+	color: rgba(0, 0, 0, 0.9);
+	position: relative;
+	z-index: 1;
+	height: 52px;
+	padding: 6px 12px 6px;
+	border-radius: 4px;
+}
+.loginForm button[type='submit'] {
+	width: 100%;
+	height: 50px;
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 50px;
+	border-width: 1px;
+	cursor: pointer;
+	background-color: #0073b1;
+	border: none;
+	color: #fff;
+}

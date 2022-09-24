@@ -18,6 +18,8 @@
 }
 .header_search svg {
 	fill: rgba(0, 0, 0, 0.9);
+	width: 1.9rem;
+	height: 1.9rem;
 }
 
 .header_right {
